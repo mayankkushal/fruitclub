@@ -45,4 +45,23 @@ $(function(){
         $('#not-logged').fadeTo(2000,500);
         $('#not-logged').fadeOut();
     });
+
 });
+//blog comment ajax
+$(document).on('submit', '#comment-form', function(e){
+    e.preventDefault();
+    $.ajax({
+      type:"POST",
+      url:'/blog/add_comment',
+      data:{
+      comment:$("#id_comment").val(),
+      pid:$("#pid").val(),
+      csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+      },
+      success:function(data){
+          $('#id_comment').val('');
+          $("#show_comm").append('<li><strong>' + data.user + "</strong> says: " + data.comment + '</li>');
+          $("#no-comm").hide();
+      },
+    });
+  });
