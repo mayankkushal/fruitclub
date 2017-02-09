@@ -1,0 +1,21 @@
+{% extends 'fruitclub/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Profile-{{ request.user.profile.first_name }}{% endblock %}
+
+{% block body_block %}
+	<div class="container">
+		<div class="row">
+			<img src="{{ profile.picture.url }}" alt="profile picture">
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-md-4">
+				<h3>Name</h3>
+			</div>
+			<div class="col-md-8">
+				<h3>{{ profile.first_name }} {{ profile.last_name }}</h3>
+			</div>
+		</div>
+	</div>
+{% endblock %}

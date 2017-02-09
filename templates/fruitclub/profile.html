@@ -1,0 +1,23 @@
+{% extends 'fruitclub/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+	<div class="container">
+
+		<img src="{% static 'images/empty-user-photo.png'%}">
+		<form action="profile" method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<p>
+      			<input id="id_picture" name="picture" type="file">
+    		</p>
+    		<hr>
+    		<p class="required">
+      			<input id="id_first_name" maxlength="30" name="first_name" type="text" placeholder="First Name" required autofocus class="form-control">
+    		</p>
+    		<p class="required">
+      			<input id="id_last_name" maxlength="30" name="last_name" type="text" placeholder="Last Name" required class="form-control">
+    		</p>
+    		<input type="submit" value="Submit" class="btn btn-lg btn-primary">
+		</form>
+	</div>
+{% endblock %}

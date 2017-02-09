@@ -1,0 +1,121 @@
+{% extends 'fruitclub/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Fruitclub{% endblock %}
+{% block at_top %}<div class="loader"></div>
+{% block body_block%}
+			<section class="slider">
+				<div class="flexslider">
+					<ul class="slides">
+					{% for image in image_list %}
+						<li>
+							<a href="{{ image.url }}"><img src="{{ image.picture.url }}" alt="picture"></a>
+							<p class="flex-caption">{{ image.caption }}</p>
+						</li>
+					{% endfor %}
+					</ul>
+				</div>
+			</section>
+			<!-- flexSlider -->
+				<link rel="stylesheet" href="{% static 'css/flexslider.css' %}" type="text/css" media="screen" property="" />
+				<script defer src="{% static 'js/jquery.flexslider-min.js' %}"></script>
+				<script type="text/javascript">
+				$(window).load(function(){
+				  $('.flexslider').flexslider({
+					animation: "slide",
+					start: function(slider){
+					  $('body').removeClass('loading');
+					}
+				  });
+				});
+			  </script>
+			<!-- //flexSlider -->
+		</div>
+		<div class="clearfix"></div>
+	</div>
+<!-- banner -->
+	<div class="banner_bottom">
+			<div class="wthree_banner_bottom_left_grid_sub">
+			</div>
+			<div class="wthree_banner_bottom_left_grid_sub1">
+				<div class="col-md-4 wthree_banner_bottom_left">
+					<div class="wthree_banner_bottom_left_grid">
+						<img src="{% static 'images/4.jpg' %}" alt=" " class="img-responsive" />
+						<div class="wthree_banner_bottom_left_grid_pos">
+							<h4>Discount Offer <span>25%</span></h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 wthree_banner_bottom_left">
+					<div class="wthree_banner_bottom_left_grid">
+						<img src="{% static 'images/5.jpg' %}" alt=" " class="img-responsive" />
+						<div class="wthree_banner_btm_pos">
+							<h3>introducing <span>best store</span> for <i>groceries</i></h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 wthree_banner_bottom_left">
+					<div class="wthree_banner_bottom_left_grid">
+						<img src="{% static 'images/6.jpg' %}" alt=" " class="img-responsive" />
+						<div class="wthree_banner_btm_pos1">
+							<h3>Save <span>Upto</span> $10</h3>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="clearfix"> </div>
+	</div>
+<!-- top-brands -->
+	<div class="top-brands">
+		<div class="container">
+			<h3>Hot Offers</h3>
+			<div class="agile_top_brands_grids">
+				{% for product in product_list %}
+				<div class="col-md-3 top_brand_left">
+					<div class="hover14 column">
+						<div class="agile_top_brand_left_grid">
+							<div class="agile_top_brand_left_grid1">
+								<figure>
+									<div class="snipcart-item block" >
+										<div class="snipcart-thumb">
+										{% with product.images.all|first as image %}
+											<a href="single.html"><img title=" " alt=" " src="{{ image.image.url }}" /></a>
+										{% endwith %}		
+											<p>{{ product.name }}</p>
+											<h4>&#8377;{{ product.price }} </h4>
+										</div>
+										<div class="snipcart-details top_brand_home_details">
+											<a href="{% url 'single_product' product.slug %}" class=" btn btn-lg btn-danger">See Details</a>
+										</div>
+									</div>
+								</figure>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+<!-- //top-brands -->
+
+<!-- newsletter -->
+	<div class="newsletter">
+		<div class="container">
+			<div class="w3agile_newsletter_left">
+				<h3>sign up for our newsletter</h3>
+			</div>
+			<div class="w3agile_newsletter_right">
+				<form action="#" method="post">
+					<input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+					<input type="submit" value="subscribe now">
+				</form>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- //newsletter -->
+<!-- footer -->
+	{% endblock %}

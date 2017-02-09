@@ -1,0 +1,19 @@
+{% extends 'fruitclub/base.html' %}
+{% load staticfiles %}
+{% block title %}Checkout{% endblock %}
+
+{% block at_top %}
+	<div class="loader"></div>
+{% endblock %}
+
+{% block body_block %}
+	<div class="container">
+		<h3>We only support online payment through Instamojo as of yet.</h3>
+		<hr>
+		<h5>Cash on Delivery Coming Soon...</h5>
+		<hr>
+		<hr>
+		<h4>Total amount to pay: &#8377;{{ amount }}</h4>
+		<a href="{{ url }}" class="btn btn-lg btn-success">Proceed to Pay</a>
+	</div>
+{% endblock %}
