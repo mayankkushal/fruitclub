@@ -10,7 +10,8 @@
       <meta name="keywords" content="free, responsive, blog, fashion, web site, template"/>
       <link rel="stylesheet" href="{% static 'css/components.css' %}">
       <link rel="stylesheet" href="{% static 'css/responsee.css' %}">
-      <!-- CUSTOM STYLE -->       
+      <!-- CUSTOM STYLE -->    
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">   
       <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
       <link rel="stylesheet" href="{% static 'css/template-style.css' %}">
       <script type="text/javascript" src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
@@ -23,7 +24,7 @@
    </head>
    <body class="size-1140">
       <!-- TOP NAV WITH LOGO -->          
-      <header class="margin-bottom">
+      <header class="margin-bottom"> 
          <div class="line">
             <nav>
                <div class="top-nav">
@@ -32,6 +33,16 @@
                   Super<span>Blog</span>
                   </a>            
                   <ul class="top-ul right">
+                  {% if user.is_authenticated  %}
+                     <li ><a href="{% url 'profile_page' %}">Hi, {{ request.user.profile.first_name }}</a></li>
+                     <li><a href="{% url 'profile_page' %}"><img class="topbar-profile img-circle" src="{{ request.user.profile.picture.url }}"/></a></li>
+                     <li><a href="{% url 'auth_logout' %}">Logout</a></li>
+                     {% else %}
+                        <li><a href="#">Hi, Stranger</a></li>
+                        <li><img class="topbar-profile img-circle" src="{% static 'images/empty-user-photo.png' %}"/></li>
+                        <li><a href="{% url 'auth_login' %}">Login</a></li>
+                        <li><a href="{% url 'registration_register' %}">Signup</a></li>
+                     {% endif %}
                      <li>            
                         <a href="{% url 'blog:index' %}">Blog</a>            
                      </li>
