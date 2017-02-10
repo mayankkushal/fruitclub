@@ -15,7 +15,7 @@
 									<div class="snipcart-item block" >
 										<div class="snipcart-thumb">
 										{% with product.images.all|first as image %}
-											<a href="single.html"><img title=" " alt=" " src="{{ image.image.url }}" /></a>
+											<a href="{% url 'single_product' product.slug %}"><img src="{{ image.image.url }}" /></a>
 										{% endwith %}		
 											<p>{{ product.name }}</p>
 											<h4>&#8377;{{ product.price }} </h4>

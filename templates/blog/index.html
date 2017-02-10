@@ -29,14 +29,14 @@
             <nav>
                <div class="top-nav">
                   <p class="nav-text"></p>
-                  <a class="logo" href="index.html">            
+                  <a class="logo" href="{% url 'blog:index' %}">            
                   Super<span>Blog</span>
                   </a>            
                   <ul class="top-ul right">
                   {% if user.is_authenticated  %}
                      <li ><a href="{% url 'profile_page' %}">Hi, {{ request.user.profile.first_name }}</a></li>
                      <li><a href="{% url 'profile_page' %}"><img class="topbar-profile img-circle" src="{{ request.user.profile.picture.url }}"/></a></li>
-                     <li><a href="{% url 'auth_logout' %}">Logout</a></li>
+                     <li><a href="{% url 'auth_logout' %}?next={% url 'blog:index' %}">Logout</a></li>
                      {% else %}
                         <li><a href="#">Hi, Stranger</a></li>
                         <li><img class="topbar-profile img-circle" src="{% static 'images/empty-user-photo.png' %}"/></li>
@@ -125,21 +125,15 @@
             <!-- SIDEBAR -->             
             <div class="s-12 l-3">
                <aside>
-                  <!-- NEWS 1 -->           
-                  <img src="img/news1.jpg" alt="News 1">          
+                  <!-- NEWS 1 -->                    
                   <div class="aside-block margin-bottom">
                      <h3>This is the first news on blog</h3>
                      <p>Lorem ipsum dolor sit amet, conse ctetuer. Duis autem vemeu iriure dolor adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam</p>
                   </div>
-                  <!-- NEWS 2 -->           
-                  <img src="img/news2.jpg" alt="News 2">          
+                  <!-- NEWS 2 -->              
                   <div class="aside-block margin-bottom">
                      <h3>Second news on the fashion blog</h3>
                      <p>Lorem ipsum dolor sit amet, conse ctetuer. Duis autem vemeu iriure dolor adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam</p>
-                  </div>
-                  <!-- AD REGION -->         
-                  <div class="advertising margin-bottom">
-                     <img src="img/banner.jpg" alt="ad banner">         
                   </div>
                </aside>
             </div>
