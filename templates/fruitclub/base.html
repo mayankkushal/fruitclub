@@ -55,9 +55,7 @@
 				<li><img class="topbar-profile img-circle" src="{% static 'images/empty-user-photo.png' %}"/></li>
 			{% endif %}
 				<li class="dropdown profile_details_drop">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-					<div class="mega-dropdown-menu">
-						<div class="w3ls_vegetables">
+					<a href="#" class="dropdown-toggle drp" data-toggle="dropdown"><span class="caret"></span></a>
 							<ul class="dropdown-menu drp-mnu">
 							{% if user.is_authenticated %}
 								<li><a href="{% url 'auth_logout' %}?next={% url 'index' %}">Logout</a></li>
@@ -66,11 +64,10 @@
 								<li><a href="{% url 'registration_register' %}">Sign Up</a></li>
 							{% endif %}
 							</ul>
-						</div>                  
-					</div>	
 				</li>
 			</ul>
 		</div>
+
 		<div class="w3l_header_right1">
 			<h2><a href="#contactModal" data-toggle="modal">Contact Us</a></h2>
 		</div>
