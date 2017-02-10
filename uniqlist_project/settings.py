@@ -32,10 +32,10 @@ ALLOWED_HOSTS = []
 # To send activation email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST = 'in-v3.mailjet.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = 'a8e936c8396c7176bab2224f1463c013'
+EMAIL_HOST_PASSWORD = 'e3a8daeb44bd8365a4fed7106735dc9e'
 DEFAULT_FROM_EMAIL = 'activation@fruitclub.in'
 # Application definition
 
