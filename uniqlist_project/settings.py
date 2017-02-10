@@ -34,8 +34,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = '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'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = 'activation@fruitclub.in'
 # Application definition
 
