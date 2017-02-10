@@ -1,3 +1,4 @@
+//loader
 $(window).load(function(){
     $('.loader').fadeOut("slow");
 });
@@ -46,13 +47,46 @@ $(function(){
         $('#not-logged').fadeOut();
     });
 
+    //like article
+    $(".like").click(function(event){
+      var pid = $(this).attr('data-pid');
+    $.ajax({
+      type:'get',
+      url: likeURL,
+      data:{
+        'pid':pid,
+        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+      },
+      success:function(data){
+        $('#count').html(data.count);
+        if(data.liked){
+          $('.like').removeClass('btn-info');
+          $('.like').addClass('btn-danger');
+        }
+        else{
+          $('.like').removeClass('btn-danger');
+          $('.like').addClass('btn-info');
+        }
+        }
+    });
+  });
+
+    //check article like
+    var pid = $('.like').attr('data-pid');
+    $.get(checkURL, {'pid':pid}, function(data){
+      if(data){
+        $('.like').removeClass('btn-info');
+          $('.like').addClass('btn-danger');
+      }
+    });
+
 });
-//blog comment ajax
+//blog comment 
 $(document).on('submit', '#comment-form', function(e){
     e.preventDefault();
     $.ajax({
       type:"POST",
-      url:'/blog/add_comment',
+      url: commentURL,
       data:{
       comment:$("#id_comment").val(),
       pid:$("#pid").val(),
@@ -62,6 +96,7 @@ $(document).on('submit', '#comment-form', function(e){
           $('#id_comment').val('');
           $("#show_comm").append('<li><strong>' + data.user + "</strong> says: " + data.comment + '</li>');
           $("#no-comm").hide();
+          $('.comm-count').html(data.comm_count);
       },
     });
   });

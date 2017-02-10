@@ -7,8 +7,8 @@
 }
 
 .article-img{
-	width: 250px;
-	height: 90%;
+	width: 100%;
+	height: auto;
 }
 body {
 	background: none repeat scroll 0 0 #0b192f;
