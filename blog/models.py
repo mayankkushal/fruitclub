@@ -28,6 +28,9 @@ class Images(models.Model):
 	def __str__(self):
 		return self.article.name
 
+	class Meta:
+		verbose_name_plural = "Images"
+
 class Comment(models.Model):
 	poster = models.ForeignKey(User)
 	article = models.ForeignKey(Article)
@@ -36,3 +39,8 @@ class Comment(models.Model):
 
 	def __str__(self):
 		return self.poster.username
+
+class Like(models.Model):
+    user = models.ForeignKey(User)
+    article = models.ForeignKey(Article)
+    created = models.DateTimeField(auto_now_add=True)
