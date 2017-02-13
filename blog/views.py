@@ -50,7 +50,7 @@ def like_article(request):
 			if not created:
 				new_like.delete()
 			count = Like.objects.filter(article=article).count()
-			data = {'count':count, 'liked':liked}
+			data = {'count':count}
 			return HttpResponse(json.dumps(data), content_type='application/json')
 
 def check_like(request):
