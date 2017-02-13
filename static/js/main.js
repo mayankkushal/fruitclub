@@ -59,14 +59,6 @@ $(function(){
       },
       success:function(data){
         $('#count').html(data.count);
-        if(data.liked){
-          $('.like').removeClass('btn-info');
-          $('.like').addClass('btn-danger');
-        }
-        else{
-          $('.like').removeClass('btn-danger');
-          $('.like').addClass('btn-info');
-        }
         }
     });
   });
