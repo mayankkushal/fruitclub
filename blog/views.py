@@ -49,9 +49,6 @@ def like_article(request):
 			new_like, created = Like.objects.get_or_create(user=request.user, article_id=pid)
 			if not created:
 				new_like.delete()
-				liked = False
-			else:
-				liked = True
 			count = Like.objects.filter(article=article).count()
 			data = {'count':count, 'liked':liked}
 			return HttpResponse(json.dumps(data), content_type='application/json')
