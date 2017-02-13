@@ -49,6 +49,14 @@ $(function(){
 
     //like article
     $(".like").click(function(event){
+      if($('.like').hasClass('btn-info')){
+        $('.like').removeClass('btn-info');
+        $('.like').addClass('btn-danger');
+      }
+      else{
+        $('.like').removeClass('btn-danger');
+        $('.like').addClass('btn-info');
+      }
       var pid = $(this).attr('data-pid');
     $.ajax({
       type:'get',
